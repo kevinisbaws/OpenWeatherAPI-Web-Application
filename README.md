@@ -1,4 +1,4 @@
-# Task: OpenWeatherMap API Web Program Documentation
+# OpenWeatherMap API Web Program Documentation
 
 > Instructions on the setup and how to run the application
 
@@ -8,9 +8,9 @@
 
 ## OpenWeatherMap API Setup
 
-- Create an OpenWeatherMap account at https://openweathermap.org.
-- Create an OpenWeatherMap key at https://home.openweathermap.org/api_keys.
-- Save the key for use later on
+> Create an OpenWeatherMap account at https://openweathermap.org.
+> Create an OpenWeatherMap key at https://home.openweathermap.org/api_keys.
+> Save the key for use later on
 
 ## Virtual Environment Setup
 
@@ -31,8 +31,6 @@ On Mac/Linux:
 python3 -m venv <environment name>
 ```
 
-**note** Don't include the <>
-
 - Activate the virtual environment
 
 ```sh
@@ -49,7 +47,7 @@ python3 -m venv <environment name>
 - Clone the repository by entering this in the terminal
 
 ```sh
-git clone https://github.com/kevinisbaws/
+git clone https://github.com/kevinisbaws/OpenWeatherAPI-Web-Application
 ```
 
 - Enter pip/pip3 to install all of the dependencies listed below
@@ -58,14 +56,16 @@ git clone https://github.com/kevinisbaws/
 pip install flask
 pip install python-dotenv
 pip install requests
-Alternatively, you can enter "pip install -r requirements.txt" (requirements.txt is in this file) to install all of them
+
 
 ```
+
+Alternatively, you can enter "pip install -r requirements.txt" (requirements.txt is in this file) to install all of them
 
 ## Run the program
 
 ```sh
-Use
+Use:
 
 flask run
 or
