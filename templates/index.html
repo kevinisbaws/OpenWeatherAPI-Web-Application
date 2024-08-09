@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenWeatherMap API</title>
+    <link rel="stylesheet" href="../static/styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <div class="form">
+      <div class="form-container">
+        <h1>Weather Checker</h1>
+        <form action="/" method="post" class="form-items">
+          <div class="cities">
+            <label for="city-name">City Name</label>
+            <input type="text" name="city" id="city" class="input-box" />
+          </div>
+          
+          <h4>OR</h3>
+          <div class="zip-codes">
+            <label for="zip-code">Zip Code</label>
+            <input type="text" name="zip-code" id="zip-code" class="input-box" />
+          </div>
+          <br>
+          <div class="button">
+            <button type="submit" class="btn">Submit</button>
+          </div>
+        </form>
+        
+      </div>
+      <div class="results-container">
+        <div class="results-box">
+          <h1 class="city-name">{{weatherInfo.cityName}}</h1>
+          <h3>Temperature:</h3>
+          <p id="temperature">{{weatherInfo.temperature}}</p>
+          <h3>Humidity:</h3>
+          <p id="humidity">{{weatherInfo.humidity}}</p>
+          <h3>Weather Description:</h3>
+          <p id="weather-description">{{weatherInfo.weatherDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

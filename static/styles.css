@@ -1,0 +1,60 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  background-image: url("images/weather-background.png");
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  box-sizing: border-box;
+}
+ /* INDEX (HOME) PAGE
+ ---------------------------------------------------------------------------*/
+ .form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  max-height: 400vh;
+ }
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+  background-color: #FFFFFF;
+  padding: 15px 20px;
+  font-size: 20px;
+  max-width: 400px;
+  height: 450px;
+}
+
+.form-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  width: 100px;
+}
+.button {
+  width: 80px;
+  margin-top: 15px;
+  margin-left: 165px;
+}
+ /* RESULTS PAGE
+ ---------------------------------------------------------------------------*/
+
+ .results-container {
+  flex: 1;
+  background-color: #FFFFFF;
+  max-width: 400px;
+  height: 450px;
+  padding: 15px 20px;
+ }
+
+ .results-box {
+  display: flex;
+  flex-direction: column;
+ }
