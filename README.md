@@ -44,7 +44,7 @@ python3 -m venv <environment name>
 
 - Create a folder named '.env' in order to store your API keys safely
 
-## Installation
+## Installing Dependencies
 
 - Clone the repository by entering this in the terminal
 
@@ -52,24 +52,24 @@ python3 -m venv <environment name>
 git clone https://github.com/kevinisbaws/
 ```
 
-- Use pip or pip3 to install all the dependencies
+- Enter pip/pip3 to install all of the dependencies listed below
 
 ```sh
 pip install flask
 pip install python-dotenv
 pip install requests
-or you can just:
-pip install -r requirements.txt
+Alternatively, you can enter "pip install -r requirements.txt" (requirements.txt is in this file) to install all of them
+
 ```
 
-- Place your saved OpenWeatherMap API key in the environment variable or .env file
-
-## Run
-
-To Run you can type in the terminal after activating your virtual environment
+## Run the program
 
 ```sh
+Use
+
 flask run
 or
 python app.py # To go into debug mode
+
+to run the program
 ```

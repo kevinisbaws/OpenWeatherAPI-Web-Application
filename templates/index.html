@@ -31,13 +31,25 @@
       </div>
       <div class="results-container">
         <div class="results-box">
-          <h1 class="city-name">{{weatherInfo.cityName}}</h1>
-          <h3>Temperature:</h3>
+          <h2 class="city-name">{{weatherInfo.cityName}} ({{weatherInfo.zipCode}})</h2>
+          <div class="result-section">
+            <h3>Temperature:&ensp;</h3>
           <p id="temperature">{{weatherInfo.temperature}}</p>
-          <h3>Humidity:</h3>
-          <p id="humidity">{{weatherInfo.humidity}}</p>
-          <h3>Weather Description:</h3>
-          <p id="weather-description">{{weatherInfo.weatherDescription}}</p>
+          </div>
+          <div class="result-section">
+            <h3>Humidity:&ensp;</h3>
+            <p id="humidity">{{weatherInfo.humidity}}</p>
+          </div>
+          <div class="result-section">
+            <h3>Weather Description:&ensp;</h3>
+            <p id="weather-description">{{weatherInfo.weatherDescription|capitalize}}</p> 
+            <img src="{{ weatherInfo.weatherIcon }}" alt="" class="icon">
+          </div>
+          <div class="result-section">
+            <h3>Time of submission:&ensp; </h3>
+            <p> {{weatherInfo.timeDisplayed}} </p>
+          </div>
+          
         </div>
       </div>
     </div>
