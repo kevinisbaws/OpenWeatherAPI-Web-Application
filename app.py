@@ -23,7 +23,8 @@ def index():
     'humidity' : "",
     'weatherDescription' : "",
     'weatherIcon' : "",
-    'timeDisplayed' : ""
+    'timeDisplayed' : "",
+    'maxMin' : ""
   }
 
   # POST method in order to create new data and post it onto the web application
@@ -31,30 +32,41 @@ def index():
     city = request.form.get("city")
     zipCode = request.form.get("zip-code")
     # use the zip code instead of city
-    if (not city):
-       zipProperties = getZipProperties(zipCode=zipCode)
-       cityProperties = getCityProperties(city=zipProperties['name'])
-       weatherInfo['zipCode'] = zipProperties['zip']
-    # use the city instead of the zip code
-    # i need to get the city'd id in order to get the zip code. 
+    if (zipCode):
+      if (not city and len(str(zipCode)) == 5):
+        zipProperties = getZipProperties(zipCode=zipCode)
+        cityProperties = getCityProperties(city=zipProperties['name'], zipCode=zipCode)
+        weatherInfo['zipCode'] = zipProperties['zip']
+      # use the city instead of the zip code
+      # i need to get the city'd id in order to get the zip code. 
+      else:
+        weatherInfo['cityName'] = 'Invalid Zip Code Inputted'
+        return render_template("index.html", weatherInfo=weatherInfo)
     else:
-      cityProperties = getCityProperties(city=city)
+      cityProperties = getCityProperties(city=city, zipCode=zipCode)
       zipProperties = getZipProperties(zipCode=zipCode)
 
-    print(zipCode)
+
+
     # Good status codes(200) indicates we need to update the weatherInfo
     if (cityProperties['cod'] == 200):
-      weatherInfo['cityName'] = cityProperties['name']
-      weatherInfo['temperature'] = f"{cityProperties['main']['temp']}"
+      if (zipCode):
+        weatherInfo['cityName'] = zipProperties['name']
+      else:
+        weatherInfo['zipCode'] = cityProperties['sys']['country']
+        weatherInfo['cityName'] = cityProperties['name']
+      weatherInfo['temperature'] = f"{cityProperties['main']['temp']} °F"
       weatherInfo['humidity'] = f"{cityProperties['main']['humidity']}"
       weatherInfo['weatherDescription'] = f"{cityProperties['weather'][0]['description']}"
       icon = cityProperties['weather'][0]['icon']
       weatherInfo['weatherIcon'] = f"http://openweathermap.org/img/wn/{icon}@2x.png"
       currentTime = datetime.now()
       weatherInfo['timeDisplayed'] = currentTime
+      weatherInfo['maxMin'] = f"{cityProperties['main']['temp_max']} / {cityProperties['main']['temp_min']}"
     # Bad status code(404), instead make the cityName an error message
     else:
       weatherInfo['cityName'] = 'Invalid City Inputted'
+      
     
     response = render_template("index.html", weatherInfo=weatherInfo), 200
 
@@ -69,8 +81,11 @@ def index():
   
 # getWeatherProperties function: takes in the city as a param, tries to get the json data and return
 # the json data
-def getCityProperties(city):
-  cityURL = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=imperial"
+def getCityProperties(city, zipCode):
+  if (not zipCode):
+    cityURL = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=imperial"
+  else:
+    cityURL = f"https://api.openweathermap.org/data/2.5/weather?zip={zipCode}&appid={API_KEY}&units=imperial"
 
   properties = APICall(cityURL)
   return properties
